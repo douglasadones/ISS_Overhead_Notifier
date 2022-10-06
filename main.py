@@ -5,10 +5,14 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from time import sleep
 
+# Informações necessárias para o envio do email
 MEU_EMAIL = "Seu email"
 MINHA_SENHA = "Senha do seu Email"
 MY_LAT = int  # Sua latitude
 MY_LONG = int  # Sua longitude
+host = "host do seu provedor"
+port = "Número da porta do seu provedor"
+target_email = "email que vai receber a msg"
 
 
 def iss_proxima():
@@ -48,10 +52,6 @@ while True:
     sleep(60)
     # Verifica se a ISS está perto da minha posição atual e é noite. Se sim, envia um email pedindo para olhar para cima
     if iss_proxima() and esta_de_noite():
-        # Informações necessárias para o envio do email
-        host = "host do seu provedor"
-        port = "Número da porta do seu provedor"
-        target_email = "email que vai receber a msg"
 
         # Iniciando o servidor
         with smtplib.SMTP(host, port) as connection:  # Servidor do nosso email (cada provedor de email tem o seu)
